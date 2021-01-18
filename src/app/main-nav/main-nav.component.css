@@ -1,0 +1,63 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 300px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.top-bar {
+  position: fixed;
+}
+
+.example-icon {
+  padding: 0 14px;
+  color: black;
+  cursor: pointer;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+i {
+  float: right;
+}
+
+.sub-menu {
+  margin: 0px 50px 0px 70px; /* top, right, bottom, left */
+}
+
+.menu {
+  font-size: 16pt;
+}
+
+.top-menu {
+  margin: 0px 50px 0px 70px; /* top, right, bottom, left */
+  cursor: pointer;
+}
+
+.size-sidenav {
+  margin: 0px 120px 0px 0px; /* top, right, bottom, left */
+}
+
+.toolbar {
+  /*background-color: #4169E1;*/
+  background-color: #4285F4;
+  /* position: fixed; */
+}
+
+.fo {
+  position: absolute;
+  width: 100%;
+}

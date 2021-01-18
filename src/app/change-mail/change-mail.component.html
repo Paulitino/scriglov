@@ -1,0 +1,32 @@
+<div class="edit-page">
+  <div class="form">
+    <link rel="stylesheet" href="./change-mail.component.css">
+    <h1>Modification de l'adresse mail</h1>
+    <form (ngSubmit)="onSubmit()" #editMailForm="ngForm">
+
+      <div [hidden]="!fail" class="alert-danger">Adresse mail incorrect</div>
+      <div [hidden]="!ok" class="alert-success">Adresse mail changé</div>
+
+      <div class="form-group">
+        <label for="currentMail">Ancienne adresse mail</label>
+        <input type="mail" id="currentMail" email="true" required name="currentMail" [(ngModel)]="model.currentMail" #currentMail="ngModel">
+        <div [hidden]="currentMail.valid || currentMail.pristine" class="alert-danger">Format non conforme</div>
+      </div>
+
+      <div class="form-group">
+        <label for="newMail">Nouvelle adresse mail</label>
+        <input type="mail" id="newMail" required [(ngModel)]="model.newMail" email="true" name="newMail" #newMail="ngModel">
+        <div [hidden]="newMail.valid || newMail.pristine" class="alert-danger">Format non conforme</div>
+      </div>
+
+      <div class="form-group">
+        <label for="confNewMail">Confirmation de l'adresse mail</label>
+        <input type="mail" id="confNewMail" required [(ngModel)]="model.confNewMail" name="confNewMail" #confNewMail="ngModel">
+        <div [hidden]="!notSame" class="alert-danger">Confirmation adresse mail ne correspond pas à l'adresse mail</div>
+      </div>
+
+        <button type="submit" (click)="updateMail()">Modifier</button>
+    </form>
+    <p class="message"><a routerLink="/profile_edit">Annuler</a></p>
+  </div>
+</div>

@@ -1,0 +1,60 @@
+mat-tab-group {
+    overflow: scroll;
+}
+
+mat-card {
+    margin: 30px 100px 30px 100px; /* top, right, bottom, left */
+}
+
+mat-card-title, mat-card-subtitle, mat-card-actions {
+    text-align: center;
+}
+
+.nav-tabs-img-exercices {
+    text-align: center;
+    float: left;
+    margin-right: 20px;
+}
+
+.nav-tabs-exercices {
+    color: black;
+    text-align: justify;
+}
+
+img {
+    display: block;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+}  
+
+.button-disabled {
+    background-color: #DCDCDC;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.button {
+    outline: 0;
+    background-color: #2196f3;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #555;
+}

@@ -1,0 +1,74 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="!(isHandset$ | async)">
+    <mat-toolbar style="background-color: #4285F4;"><a mat-list-item class="top-menu"
+        (click)="redirectHome();"><span>Scriglov</span></a></mat-toolbar>
+    <!-- side navigation -->
+    <mat-nav-list class="size-sidenav">
+      <br />
+
+      <!-- Exercices tab -->
+      <div>
+        <h1 matSubheader class="menu">
+          <mat-icon class="example-icon" aria-hidden="false" aria-label="Example widgets icon">widgets</mat-icon>
+          Exercices
+        </h1>
+        <!-- <span *ngFor="let requestAllExo of (_exoInfo)">
+          <span *ngFor="let exo of requestAllExo.response">
+            <a mat-list-item class="sub-menu" [childMessage]="parentMessage" (click)="redirectJacobson();"><span>{{exo.name}}</span></a> -->
+            <!-- <app-jacobson [childMessage]="parentMessage"></app-jacobson> -->
+          <a mat-list-item class="sub-menu" (click)="redirectJacobson();"><span>Jacobson</span></a>
+          <a mat-list-item class="sub-menu" (click)="redirectPetrissageBalle();"><span>Pétrissage de balle</span></a>
+          <a mat-list-item class="sub-menu" (click)="redirectPierreFeuilleCiseau();"><span>Pierre Feuille Ciseau</span></a>
+            <!-- </span>
+          </span> -->
+      </div>
+
+      <!-- Documentations tab -->
+      <h1 matSubheader class="menu">
+        <mat-icon class="example-icon" aria-hidden="false" aria-label="Example video_library icon">video_library
+        </mat-icon>Documentations
+      </h1>
+      <a mat-list-item class="sub-menu" (click)="redirectTutorials();"><span>Tutoriel</span></a>
+      <a mat-list-item class="sub-menu" (click)="redirectVideos();"><span>Vidéos</span></a>
+      <a mat-list-item class="sub-menu" (click)="redirectEmptyState();"><span>Recommandations</span></a>
+
+      <!-- Statistics tab -->
+      <h1 matSubheader class="menu">
+        <mat-icon class="example-icon" aria-hidden="false" aria-label="Example poll icon">poll</mat-icon>Statistiques
+      </h1>
+      <a mat-list-item class="sub-menu" (click)="redirectStatistics();"><span>Statistiques</span></a>
+
+      <!-- Contact tab -->
+      <h1 matSubheader class="menu">
+        <mat-icon class="example-icon" aria-hidden="false" aria-label="Example contacts icon">contacts</mat-icon>Contact
+      </h1>
+      <a mat-list-item class="sub-menu" (click)="redirectContacts();"><span>Listes</span></a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar class="toolbar">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span class="example-spacer"></span>
+      
+      <!-- Profiles tab (private information, statistics, settings) -->
+      <a (click)="redirectProfile();">
+        <mat-icon class="example-icon" aria-hidden="false" aria-label="Example account_circle icon">account_circle
+        </mat-icon>
+      </a>
+      <a mat-button [matMenuTriggerFor]="menu">
+        <mat-icon class="example-icon" aria-hidden="false" aria-label="Example list icon">list</mat-icon>
+      </a>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="redirectLegalNotices();">Mentions légales</button>
+        <button mat-menu-item (click)="redirectCGU();">CGU</button>
+        <button mat-menu-item (click)="redirectDataProtectionCharter();">Protection des données</button>
+      </mat-menu>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,62 @@
+<div *ngFor="let requestExo of (_exoJacobson)">
+  <mat-card *ngFor="let exo of requestExo.response">
+    <!-- <a style="cursor: pointer;" (click)="redirectRelaxation();"><mat-icon class="example-icon" aria-hidden="false" aria-label="Example present_to_all icon">keyboard_backspace</mat-icon></a> -->
+    <mat-card-title><h3>{{exo.name}}</h3></mat-card-title>
+    <br>
+    <mat-card-subtitle>
+      {{exo.descri}}
+    </mat-card-subtitle>
+    <!-- <a>{{childMessage}}</app-jacobson> -->
+    <br />
+    <img src="assets/img/{{exo.image_name}}.jpg" width="50%" height="50%">
+    <br>
+    <mat-card-content>
+        <!-- La relaxation progressive de Jacobson est l’une des plus efficaces. Si vous la mettez en pratique régulièrement, elle va vous permettre de soulager progressivement toutes vos tensions musculaires. -->
+        <p style="text-align: justify;">
+          {{exo.explication}}
+          <!-- <br>
+          <br>- <b>Mains</b> : Fermez et serrez vos mains jusqu’à ressentir une sorte de tension. Maintenez cette position durant 10 secondes puis, peu à peu, desserrez vos poings et libérez chacun de vos doigts, en vous focalisant sur la relaxation que cela vous apporte.
+          <br><br>- <b>Épaules</b> : Cette étape est très simple. Levez vos épaules aussi haut que vous le pouvez, délicatement, jusqu’à atteindre vos oreilles. Maintenez la position pendant quelques instants, environ 5 secondes, puis libérez-vous et focalisez-vous sur votre relaxation. Recommencez 5 fois cet exercice.
+          <br><br>- <b>Cou</b> : Ensuite, portez votre menton au niveau de votre torse, puis maintenez quelques secondes avant de relâcher.
+          <br><br>- <b>Bouche</b> : Ouvrez la bouche et tirez la langue aussi loin que possible, pendant 10 secondes. Relâchez ensuite. Puis, ensuite, plaquez votre langue contre votre palais pendant quelques secondes, avant de relâcher.
+          <br><br>- <b>Respiration</b> : Continuons ces exercices de relaxation avec une technique de respiration très simple. Inspirez pendant 5 secondes, puis retenez pendant 6 secondes, avant d’expirer pendant 7 secondes. Rien de plus simple.
+          <br><br>- <b>Dos</b> : Avec les épaules appuyées contre le dossier de la chaise, inclinez légèrement votre corps vers l’avant, afin que votre dos soit légèrement arqué. Maintenez la position durant 10 secondes, puis relâchez.
+          <br><br>- <b>Pieds</b> : Terminons notre séquence avec un exercice spécialement conçu pour les pieds. Étirez vos orteils au maximum, comme si vous vouliez vous mettre sur la pointe des pieds. Maintenez la position pendant 10 secondes, puis relâchez et focalisez-vous sur votre état de relaxation. -->
+        </p>
+        <br>
+        <p *ngIf="exo.hardware == 0">
+          <mat-icon style="display: inline-flex; vertical-align: middle;" aria-hidden="false" aria-label="Example info icon">info</mat-icon> 
+          Cet exercice ne nécessite pas l'utilisation du gant !
+        </p>
+    </mat-card-content>
+    <br />
+    <mat-card-actions>
+      <button class="button" (click)="timerModal();">Lancer le minuteur</button> <!-- cd/restart() -->
+      <p style="text-align: center">
+        <mat-icon style="display: inline-flex; vertical-align: middle;" aria-hidden="false" aria-label="Example access_time icon">access_time</mat-icon>
+        {{exo.time}} minutes
+      </p>
+    </mat-card-actions>
+
+    <jw-modal id="custom-modal-timer">
+      <div class="icon">
+          <span class="glyphicon glyphicon-ok"></span>
+      </div>
+      <h1 style="text-align: center">
+        <mat-icon style="display: inline-flex; vertical-align: middle;" aria-hidden="false" aria-label="Example access_time icon">access_time</mat-icon>
+        <countdown #cd [config]="{leftTime: this.time, format: 'm:s'}" (finished)="this.closeModal('custom-modal-timer');">$!m!:$!s!</countdown> <!-- $!h!:$!m!:$!s! -->
+      </h1>
+      <p style="text-align: justify"><!--{{exo.explication}}-->
+        <br>
+        <br>- <b>Mains</b> : Fermez et serrez vos mains jusqu’à ressentir une sorte de tension. Maintenez cette position durant 10 secondes puis, peu à peu, desserrez vos poings et libérez chacun de vos doigts, en vous focalisant sur la relaxation que cela vous apporte.
+        <br><br>- <b>Épaules</b> : Cette étape est très simple. Levez vos épaules aussi haut que vous le pouvez, délicatement, jusqu’à atteindre vos oreilles. Maintenez la position pendant quelques instants, environ 5 secondes, puis libérez-vous et focalisez-vous sur votre relaxation. Recommencez 5 fois cet exercice.
+        <br><br>- <b>Cou</b> : Ensuite, portez votre menton au niveau de votre torse, puis maintenez quelques secondes avant de relâcher.
+        <br><br>- <b>Bouche</b> : Ouvrez la bouche et tirez la langue aussi loin que possible, pendant 10 secondes. Relâchez ensuite. Puis, ensuite, plaquez votre langue contre votre palais pendant quelques secondes, avant de relâcher.
+        <br><br>- <b>Respiration</b> : Continuons ces exercices de relaxation avec une technique de respiration très simple. Inspirez pendant 5 secondes, puis retenez pendant 6 secondes, avant d’expirer pendant 7 secondes. Rien de plus simple.
+        <br><br>- <b>Dos</b> : Avec les épaules appuyées contre le dossier de la chaise, inclinez légèrement votre corps vers l’avant, afin que votre dos soit légèrement arqué. Maintenez la position durant 10 secondes, puis relâchez.
+        <br><br>- <b>Pieds</b> : Terminons notre séquence avec un exercice spécialement conçu pour les pieds. Étirez vos orteils au maximum, comme si vous vouliez vous mettre sur la pointe des pieds. Maintenez la position pendant 10 secondes, puis relâchez et focalisez-vous sur votre état de relaxation.
+      </p>
+      <p><button class="button-jw" (click)="closeModal('custom-modal-timer');">Terminer</button></p>
+    </jw-modal>
+  </mat-card>
+</div>

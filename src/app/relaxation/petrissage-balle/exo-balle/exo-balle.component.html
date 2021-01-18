@@ -1,0 +1,62 @@
+<div *ngFor="let requestExo of (_exoPetrissageBalle)">
+  <mat-card *ngFor="let exo of requestExo.response">
+    <!-- <a style="cursor: pointer;" (click)="redirectRelaxation();"><mat-icon class="example-icon" aria-hidden="false" aria-label="Example present_to_all icon">keyboard_backspace</mat-icon></a> -->
+    <!-- <mat-card-title><h3>{{exo.name}}</h3></mat-card-title> -->
+    <br>
+    <mat-card-subtitle>
+      {{exo.descri}}
+    </mat-card-subtitle>
+
+    <mat-card-content>
+        <!-- La relaxation progressive de Jacobson est l’une des plus efficaces. Si vous la mettez en pratique régulièrement, elle va vous permettre de soulager progressivement toutes vos tensions musculaires. -->
+        <p style="text-align: justify;">
+          {{exo.explication}}
+        <br>
+    </mat-card-content>
+    <br />
+    <mat-card-actions>
+      <br />
+      <h1 style="text-align: center">
+        <mat-icon style="display: inline-flex; vertical-align: middle;" aria-hidden="false" aria-label="Example access_time icon">access_time</mat-icon>
+        <countdown #cd [config]="{leftTime: this.time, format: 'm:s'}" (finished)="checkSuccessOrFail();">$!m!:$!s!</countdown> <!-- $!h!:$!m!:$!s! -->
+        <!-- <countdown #cd [config]="{leftTime: this.time, format: 'm:s'}" (finished)="this.closeModal('custom-modal-timer');">$!m!:$!s!</countdown> -->
+      </h1>
+       <h1>Score : {{score}}</h1>
+      <div class="grid">
+        <div>
+            <div class="fire">
+                <img class="fire-elem" height="100px" src="{{pinkyimage}}">
+                <img class="fire-elem" height="100px" src="{{annularimage}}">
+                <img class="fire-elem" height="100px" src="{{majorimage}}">
+                <img class="fire-elem" height="100px" src="{{indeximage}}">
+                <img class="fire-elem" height="100px" src="{{thumbimage}}">
+            </div>
+              <img src="{{handpath}}" height="350px" width="350px">
+        </div>
+        <div>
+          <img id="current" src="{{current}}">
+          <h1>{{feedback}}</h1>
+        </div>
+      </div>
+      <button class="button" (click)="redirectDetailsPetrissageBalle();">Terminer</button>
+    </mat-card-actions>
+
+    <!-- Success exercice modal -->
+    <jw-modal id="custom-modal-success">
+        <div class="icon">
+            <span class="glyphicon glyphicon-ok"></span>
+        </div>
+        <h1>BRAVO</h1>
+        <p>La réussite est liée à la patience mais elle dépend également de beaucoup de bonne volonté.</p>
+        <p><button class="button-jw" (click)="closeModal('custom-modal-success');">Quitter</button></p>
+      </jw-modal>
+  
+      <!-- Fail exercice modal -->
+      <jw-modal id="custom-modal-fail">
+        <h1>DOMMAGE</h1>
+        <p>“Les difficultés sont des défis”, ne lache rien !</p>
+        <p>L'échec fait partie intÉgrante de votre réussite.</p>
+        <p><button class="button-jw" (click)="closeModal('custom-modal-fail');">Quitter</button></p>
+      </jw-modal>
+  </mat-card>
+</div>

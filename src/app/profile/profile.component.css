@@ -1,0 +1,135 @@
+/* .structure {
+  margin: 30px 100px 0px 100px; 
+}
+
+.ng-valid[required], .ng-valid.required  {
+    border-left: 5px solid #42A948;
+  }
+  
+.ng-invalid:not(form)  {
+  border-left: 5px solid #a94442;
+}
+
+* {
+  margin-left: 80px;
+  margin-right: 50px;
+}
+
+.logout {
+  margin-top: auto;
+  margin-bottom: auto;
+  border-radius: 8px;
+  background-color: #a94442;
+  font-size: 12px;
+  padding: 10px 24px;
+}
+
+.edit {
+  float: right;
+}
+
+input[type=email], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #2196f3;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.card {
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  padding: 15px;
+  text-align: center;
+  font-family: arial;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+} */
+
+
+.structure {
+  margin: 30px 100px 30px 100px;
+}
+
+/* Three columns side by side */
+.column {
+  float: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+/* Display the columns below each other instead of side by side on small screens */
+@media screen and (max-width: 550px) {
+  .column {
+      width: 100%;
+      display: block;
+  }
+}
+
+/* Add some shadows to create a card effect */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Some left and right padding inside the container */
+.container {
+  padding: 0 16px;
+}
+
+/* Clear floats */
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: grey;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 14px;
+  color: white;
+  background-color: #2196f3;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: #555;
+}

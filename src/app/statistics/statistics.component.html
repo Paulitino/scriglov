@@ -1,0 +1,37 @@
+<div class="container">
+  <h1>
+    <mat-icon aria-hidden="false" aria-label="Example poll icon">poll</mat-icon>
+    Statistiques
+  </h1>
+  <div *ngIf="_exercices?.length > 0; else elseBlock">
+    <ng-container *ngFor="let exo of _exercices;">
+      <mat-expansion-panel class="card">
+        <mat-expansion-panel-header>
+          <h2>{{exo.name}}</h2>
+        </mat-expansion-panel-header>
+
+        <div style="height: 500px; width:100%; margin: auto;">
+          <h3>Historique des exercices</h3>
+          <ngx-charts-bar-vertical [scheme]="colorScheme" [results]="exo.barre_stat" [gradient]="gradient"
+            [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel"
+            (select)="onSelect($event)">
+          </ngx-charts-bar-vertical>
+        </div>
+
+        <div style="height: 500px; width:100%; margin: auto; margin-top: 60px;">
+          <h3>Pourcentage de la main dans la bonne position</h3>
+          <ngx-charts-pie-chart [scheme]="colorScheme_pie" [results]="exo.hand" [gradient]="gradient"
+            (select)="onSelect($event)">
+          </ngx-charts-pie-chart>
+        </div>
+
+      </mat-expansion-panel>
+    </ng-container>
+    <h3>Complétion de tous les exercices</h3>
+    <ngx-charts-advanced-pie-chart [view]="view_circle" [scheme]="colorScheme_circle" [results]="_mean"
+      [gradient]="gradient_circle" (select)="onSelect($event)">
+    </ngx-charts-advanced-pie-chart>
+  </div>
+  <ng-template #elseBlock>Vous n'avez fait aucun exercice, il n'est jamais trop tard pour s'améliorer</ng-template>
+</div>

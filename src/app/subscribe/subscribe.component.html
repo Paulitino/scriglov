@@ -1,0 +1,63 @@
+<div class="login-page">
+  <div class="form">
+    <link rel="stylesheet" href="./subscribe.component.css">
+    <h1>Inscription</h1>
+    <form class="login-form" (ngSubmit)="onSubmit()" #subscribeForm="ngForm">
+
+      <div [hidden]="!fail" class="alert-danger">L'utilisateur existe déjà</div>
+      <div [hidden]="!ok" class="alert-success">Compte créé</div>
+
+      <div class="form-group">
+        <input type="text" id="firstName" required [(ngModel)]="model.firstName" name="firstName" #firstName="ngModel"
+          placeholder="Prénom">
+        <div [hidden]="firstName.valid || firstName.pristine" class="alert-danger">Champ obligatoire</div>
+      </div>
+
+      <div class="form-group">
+        <input type="lastName" id="lastName" required [(ngModel)]="model.lastName" name="lastName" #lastName="ngModel"
+          placeholder="Nom">
+        <div [hidden]="lastName.valid || lastName.pristine" class="alert-danger">Champ obligatoire</div>
+      </div>
+
+      <div class="form-group">
+        <input type="email" id="mail" required [(ngModel)]="model.mail" email="true" name="mail" #mail="ngModel"
+          placeholder="Mail">
+        <div [hidden]="mail.valid || mail.pristine" class="alert-danger">Format non conforme</div>
+      </div>
+
+      <div class="form-group">
+        <input type="password" id="pass" required [(ngModel)]="model.pass" name="pass" #pass="ngModel"
+          placeholder="Mot de passe">
+        <div [hidden]="pass.valid || pass.pristine" class="alert-danger">Mot de passe requis</div>
+      </div>
+
+      <div class="form-group">
+        <input type="password" id="confirmPass" required [(ngModel)]="model.confirmPass" name="confirmPass"
+          #confirmPass="ngModel" placeholder="Confirmation du mot de passe">
+        <div [hidden]="!notSame" class="alert-danger">Confirmation du mot de passe ne correspond pas au mot de passe
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="doctor">Docteur :</label>
+        <select class="form-control" id="doctor" required [(ngModel)]="model.doctor" name="doctor" #power="ngModel">
+          <option *ngFor="let doc of doctors" [value]="doc">{{doc}}</option>
+        </select>
+        <!--<div [hidden]="doctor.valid || doctor.pristine" class="alert-danger">Vous devez selectionner un docteur</div>-->
+      </div>
+
+      <div>
+        <label class="container">
+          <a class="message" style="cursor: pointer" (click)="openDialog()">J'accepte les conditions générales
+            d'utilisation de Scriglov</a>
+          <input type="checkbox" (click)="test()">
+          <span class="checkmark"></span>
+        </label>
+      </div>
+
+      <button type="submit" (click)="newUser(); subscribeForm.reset()"
+        [disabled]="!this.checkcgu ? true : false && !subscribeForm.form.valid">S'inscrire</button>
+    </form>
+    <p class="message">Déja inscrit ? <a routerLink="/login">Se connecter</a></p>
+  </div>
+</div>

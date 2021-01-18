@@ -1,0 +1,40 @@
+<div class="edit-page">
+  <div class="form">
+    <link rel="stylesheet" href="./edit-profile.component.css">
+    <h1>Modification du profil</h1>
+    <form (ngSubmit)="onSubmit()" #editProfileForm="ngForm">
+
+      <div [hidden]="!fail" class="alert-danger">Mail ou mot de passe incorrect</div>
+      <div [hidden]="!ok" class="alert-success">Compte mis à jour</div>
+
+      <div class="form-group">
+        <label for="pass">Prénom</label>
+        <input type="text" id="firstName" required [(ngModel)]="model.firstName" name="firstName" #firstName="ngModel">
+      </div>
+
+      <div class="form-group">
+        <label for="lastName">Nom</label>
+        <input type="lastName" id="lastName" required [(ngModel)]="model.lastName" name="lastName" #lastName="ngModel">
+      </div>
+
+      <div class="form-group">
+        <label for="doctor">Docteur</label>
+        <input type="doctor" id="doctor" required [(ngModel)]="model.doctor" name="doctor" #doctor="ngModel">
+      </div>
+
+      <button type="submit" (click)="updateUser(); editProfileForm.reset()">Modifier</button>
+    </form>
+    <p class="message">Changer <a routerLink="/change_password">le mot de passe</a> du compte</p>
+    <p class="message">Changer <a routerLink="/change_mail">l'adresse mail</a> du compte</p>
+    <p class="message"><a routerLink="/profile">Annuler</a></p>
+    <!-- <nav>
+      <h4><a routerLink="/change_password">Changer le mot de passe du compte</a></h4>
+    </nav>
+    <nav>
+      <h4><a routerLink="/change_mail">Changer l'adresse mail du compte</a></h4>
+    </nav>
+    <nav>
+      <h4><a routerLink="/profile">Annuler</a></h4>
+    </nav> -->
+  </div>
+</div>

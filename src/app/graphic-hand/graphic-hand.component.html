@@ -1,0 +1,54 @@
+<div *ngFor="let requestExo of (_exoPierreFeuilleCiseau)">
+  <mat-card *ngFor="let exo of requestExo.response">
+    <br>
+    <mat-card-subtitle>
+      {{exo.descri}}
+    </mat-card-subtitle>
+    <mat-card-content>
+
+      <h1>Score : {{score}}</h1>
+      <div class="grid">
+        <div>
+        <div class="fire">
+            <img class="fire-elem" height="100px" src="{{pinkyimage}}">
+            <img class="fire-elem" height="100px" src="{{annularimage}}">
+            <img class="fire-elem" height="100px" src="{{majorimage}}">
+            <img class="fire-elem" height="100px" src="{{indeximage}}">
+            <img class="fire-elem" height="100px" src="{{thumbimage}}">
+          </div>
+          <img src="{{handpath}}" height="350px" width="350px">
+        </div>
+        <div>
+          <img id="current" src="{{current}}">
+        </div>
+      </div>
+    </mat-card-content>
+    <br />
+    <mat-card-actions>
+      <h1 style="text-align: center">
+        <mat-icon style="display: inline-flex; vertical-align: middle;" aria-hidden="false"
+          aria-label="Example access_time icon">access_time</mat-icon>
+        <countdown #cd [config]="{leftTime: this.time, format: 'm:s'}" (finished)="checkSuccessOrFail();">$!m!:$!s!
+        </countdown> <!-- $!h!:$!m!:$!s! -->
+      </h1>
+      <button class="button" (click)="redirectDetailsPierreFeuilleCiseau();">Terminer</button>
+    </mat-card-actions>
+
+    <!-- Success exercice modal -->
+    <jw-modal id="custom-modal-success">
+      <div class="icon">
+        <span class="glyphicon glyphicon-ok"></span>
+      </div>
+      <h1>BRAVO</h1>
+      <p>La réussite est liée à la patience mais elle dépend également de beaucoup de bonne volonté.</p>
+      <p><button class="button-jw" (click)="closeModal('custom-modal-success');">Quitter</button></p>
+    </jw-modal>
+    <!-- Fail exercice modal -->
+    <jw-modal id="custom-modal-fail">
+      <h1>DOMMAGE</h1>
+      <p>“Les difficultés sont des défis”, ne lache rien !</p>
+      <p>L'échec fait partie intégrante de votre réussite.</p>
+      <p><button class="button-jw" (click)="closeModal('custom-modal-fail');">Quitter</button></p>
+    </jw-modal>
+  </mat-card>
+</div>

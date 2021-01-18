@@ -1,0 +1,28 @@
+<div class="login-page">
+  <!-- <div class="structure"> -->
+  <div class="form">
+    <link rel="stylesheet" href="./login.component.css">
+    <h1>Connexion</h1>
+    <form class="login-form" (ngSubmit)="onSubmit()" #loginForm="ngForm">
+      <div [hidden]="!fail" class="alert-danger">Mail ou mot de passe incorrect</div>
+
+      <div>
+        <!-- <label for="mail">Mail</label> -->
+        <input type="email" id="mail" required [(ngModel)]="model.mail" email="true" name="mail" #mail="ngModel" placeholder="Mail">
+        <div [hidden]="mail.valid || mail.pristine" class="alert-danger">Format invalide</div>
+      </div>
+
+        <div class="form-group">
+          <!-- <label for="pass">Mot de passe</label> -->
+          <input type="password" id="pass" required [(ngModel)]="model.pass" name="pass" #pass="ngModel" placeholder="Mot de passe">
+          <div [hidden]="pass.valid || pass.pristine" class="alert-danger">Mot de passe requis</div>
+        </div>
+
+        <button type="submit" (click)="newUser(); loginForm.reset()" [disabled]="!loginForm.form.valid">Se connecter</button>
+        <p class="message">Pas inscrit ? <a routerLink="/subscribe">Créer un compte</a></p>
+    </form>
+    <!-- <nav>
+      <h4><a routerLink="/subscribe">S'inscrire</a></h4>
+    </nav> -->
+  </div>
+</div>

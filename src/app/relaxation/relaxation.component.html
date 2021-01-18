@@ -1,0 +1,14 @@
+<div class="container" *ngFor="let requestAllExo of (_exoInfo)">
+    <h1>
+        <mat-icon aria-hidden="false" aria-label="Example widgets icon">widgets</mat-icon>
+        Exercices
+    </h1>
+    <mat-card class="demo" routerLink="/{{exo.image_name}}" *ngFor="let exo of requestAllExo.response">
+        <mat-card-title>{{exo.name}}</mat-card-title>
+        <br />
+        <mat-card-content class="nav-tabs-exercices">
+            <img mat-card-md-image class="nav-tabs-img-exercices" src="assets/img/{{exo.image_name}}.jpg" width="25%" height="25%">
+            {{exo.descri}}
+        </mat-card-content>
+    </mat-card>
+</div>

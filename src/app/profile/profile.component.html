@@ -1,0 +1,37 @@
+<div class="structure">
+    <h1 style="text-align: center">
+      <!-- <mat-icon aria-hidden="false" aria-label="Example widgets icon">account_circle</mat-icon> -->
+      Profile
+    </h1>
+
+    <div class="column">
+      <div class="card">
+
+        <!-- <img src="assets/img/doctor-profile.png" alt="Jane" style="width:50%"> -->
+        <img src="assets/img/profile.jpg" alt="profile picture" style="width:100%">
+        <div class="container">
+          <h2 style="display: inline;" *ngIf="this._userInfo">
+            {{this._userInfo.firstName}} {{this._userInfo.surname}}
+            <a routerLink="/profile_edit" class="edit"><mat-icon class="example-icon" aria-hidden="false" aria-label="Example edit icon">edit</mat-icon></a>
+          </h2>
+          <p *ngIf="this._userInfo">{{this._userInfo.email}}</p>
+          <p *ngIf="this._userInfo">{{this._userInfo.doctor}}</p>
+            <!-- <div style="margin: 24px 0;">
+              <a href="#"><i class="fa fa-dribbble"></i></a> 
+              <a href="#"><i class="fa fa-twitter"></i></a>  
+              <a href="#"><i class="fa fa-linkedin"></i></a>  
+              <a href="#"><i class="fa fa-facebook"></i></a> 
+            </div> -->
+            <!-- <p><button >Contact</button></p> -->
+          <p><button type="submit" class="button" (click)="logOut();">Se déconnecter</button></p>
+            <!-- <h2>Docteur Dupont</h2>
+            <p class="title">Thérapeute</p>
+            <p>Spécialiste dans la rééducation de la main</p>
+            <p>contact@dupont.com</p>
+            <p>01.12.13.14.15</p>
+            <p>33 avenue des Champs-Elysées, 75008 Paris, FRANCE</p>
+            <p><button class="button">Contact</button></p> -->
+        </div>
+      </div>
+  </div>
+</div>
